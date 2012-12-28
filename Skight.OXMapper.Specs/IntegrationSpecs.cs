@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using Machine.Specifications;
+using Skight.OXMapper.Mapping;
 
 namespace Skight.OXMapper.Specs
 {
@@ -32,7 +33,7 @@ namespace Skight.OXMapper.Specs
         private It xml_content_should_generated_from_classes_value =
             () =>
                 {
-                    FileStream FileStream = new FileStream(@"C:\Temp\XMLMapper\MyClass.xml");
+                    FileStream FileStream = new FileStream(@"C:\Temp\XMLMapper\MyClass.xml",FileMode.Open);
                     FileStream.ToString().ShouldEqual(@"
 <MyClass>
 <Guid>
@@ -43,6 +44,7 @@ WangHao
 </MyClass>");
                 };
         private static Session session;
+        private static MyClass obj;
 
         class MyClassMap:XMLMap<MyClass>
         {
@@ -59,6 +61,4 @@ WangHao
             public int Value { get; set; }
         }
     }
-
-
 }
