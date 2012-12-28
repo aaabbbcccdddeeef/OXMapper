@@ -1,0 +1,32 @@
+
+###############
+#    folder   #
+###############
+/obj
+/bin
+*/obj
+*/bin
+/Skight.ES.Register.Web.UI/obj
+/_*.*
+/packages
+/NDependOut
+
+
+
+
+###############
+#     file    #
+###############
+*.lib
+*.cache
+*.user
+*.suo
+*.dotCover
+*.ncrunchproject
+*.ncrunchsolution
+*.DotSettings
+_NCrunch*
+App.config
+*/Data/Database*.*
+/Skight.ES.Register.Web.UI/Web.config
+/*.ReSharper
