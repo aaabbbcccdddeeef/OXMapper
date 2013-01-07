@@ -10,10 +10,11 @@ namespace Skight.OXMapper.Specs
 
         Establish context = () =>
             {
-                Fluently.Configure()
+                session= Fluently.Configure()
                         .Path(@"C:\Temp\XMLMapper")
-                        .Register<MyClassMap>();
-                session = SessionProvider.Instance.CurrentSession;
+                        .Register<MyClassMap>()
+                        .BuildSessionFactory()
+                        .GetCurrentSession();
                 obj = new MyClass
                     {
                         Guid = Guid.NewGuid(),
@@ -34,8 +35,7 @@ namespace Skight.OXMapper.Specs
             () =>
                 {
                     FileStream FileStream = new FileStream(@"C:\Temp\XMLMapper\MyClass.xml",FileMode.Open);
-                    FileStream.ToString().ShouldEqual(@"
-<MyClass>
+                    FileStream.ToString().ShouldEqual(@"<MyClass>
 <Guid>
 </Guid>
 <Name>

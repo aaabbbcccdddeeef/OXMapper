@@ -1,12 +1,16 @@
 ﻿namespace Skight.OXMapper
 {
-    public class SessionProvider
+    public class SessionFactory
     {
-        public static SessionProvider Instance
+        private string path;
+        public SessionFactory(string path)
         {
-            get { return new SessionProvider();}
+            this.path = path;
         }
 
-        public Session CurrentSession { get; private set; }
+        public Session GetCurrentSession()
+        {
+            return new Session(path);
+        }
     }
 }

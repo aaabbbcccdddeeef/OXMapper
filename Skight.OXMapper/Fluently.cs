@@ -4,7 +4,7 @@
     {
         public static Configuration Configure()
         {
-            throw new System.NotImplementedException();
+            return new Configuration();
         }
     }
 }

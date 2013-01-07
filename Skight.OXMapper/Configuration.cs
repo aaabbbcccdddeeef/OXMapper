@@ -2,14 +2,21 @@
 {
     public class Configuration
     {
-        public Configuration Path(string cTempXmlmapper)
+        private string path;
+        public Configuration Path(string path)
         {
-            throw new System.NotImplementedException();
+            this.path = path;
+            return this;
         }
 
         public Configuration Register<T>()
         {
-            throw new System.NotImplementedException();
+            return this;
+        }
+
+        public SessionFactory BuildSessionFactory()
+        {
+            return new SessionFactory(path);
         }
     }
 }
