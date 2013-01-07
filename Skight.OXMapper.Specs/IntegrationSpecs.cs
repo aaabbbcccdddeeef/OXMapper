@@ -34,8 +34,8 @@ namespace Skight.OXMapper.Specs
         private It xml_content_should_generated_from_classes_value =
             () =>
                 {
-                    FileStream FileStream = new FileStream(@"C:\Temp\XMLMapper\MyClass.xml",FileMode.Open);
-                    FileStream.ToString().ShouldEqual(@"<MyClass>
+                    var reader =new StreamReader(new FileStream(@"C:\Temp\XMLMapper\MyClass.xml",FileMode.Open));
+                    reader.ReadToEnd().ShouldEqual(@"<MyClass>
 <Guid>
 </Guid>
 <Name>
