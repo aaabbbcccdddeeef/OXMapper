@@ -26,7 +26,8 @@ namespace Skight.OXMapper.Specs
 
         Because of = () =>
             {
-                session.save(obj);
+                 session.save(obj);
+                 session.Dispose();
             };
         private It should_generate_xml =
             () => File.Exists(@"C:\Temp\XMLMapper\MyClass.xml").ShouldBeTrue();
