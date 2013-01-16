@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Xml;
 
 namespace Skight.OXMapper
 {
@@ -36,17 +37,20 @@ namespace Skight.OXMapper
             {
                 if (!Directory.Exists(path))
                     Directory.CreateDirectory(path);
-                using (var writer = new StreamWriter(new FileStream(path + "/" + type.Key.Name + ".xml", FileMode.Append))) {
-
-
-                    writer.Write(@"<MyClass>
-<Guid>
-</Guid>
-<Name>
-WangHao
-</Name>
-</MyClass>");    
-            }
+                var writer = new StringWriter();
+                    using (var xmlWriter =new XmlTextWriter(writer){Formatting = Formatting.Indented})
+                    {
+                        xmlWriter.WriteStartElement("MyClass");
+                        xmlWriter.WriteStartElement("Guid");
+                        xmlWriter.WriteValue(Guid.Empty.ToString());
+                        xmlWriter.WriteEndElement();
+                        xmlWriter.WriteStartElement("Name");
+                        xmlWriter.WriteValue("WangHao");
+                        xmlWriter.WriteEndElement();
+                        xmlWriter.WriteEndElement();
+        
+                    }
+            Console.Write(writer.ToString());
             
             }
         }
